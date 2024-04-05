@@ -15,6 +15,8 @@ public class BoardController {
 	@Autowired BoardService boardService;
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
+	
+	
 	@GetMapping({"","/"})
 	public String main(Model model) {
 		ArrayList<BoardDTO> boardList = boardService.boardList();
@@ -23,5 +25,13 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		
 		return "main";
+	}
+	
+		@GetMapping("board1Form")
+	public String board1Form() {
+	
+
+		
+		return "board/board1Form";
 	}
 }

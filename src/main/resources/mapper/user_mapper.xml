@@ -7,6 +7,15 @@
 	<select id="userList" resultType="User">
 		select * from user order by id desc
 	</select>
+	
+	<insert id="join" >
+		insert into user(username, email, password)
+		values(#{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<select id="login" resultType="String">
+		Select * from user where username =  #{param1} and password = #{param2}
+	</select>
 
 
 

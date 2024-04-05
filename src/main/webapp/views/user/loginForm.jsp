@@ -5,7 +5,7 @@
 
 <div class="container">
 	<h2>로그인</h2>
-	<form action="" method="POST">
+	<form action="/login" method="POST">
 
 		<div class="form-group">
 			<label for="username">Username</label> 
@@ -25,5 +25,11 @@
 
 
 </body>
+<script>
+var msg = "${msg}"
+if(msg != ""){
+	alert(msg);
+}
+</script>
 
 <%@include file="../layout/footer.jsp"%>
