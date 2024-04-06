@@ -1,14 +1,19 @@
 package com.bw.community.board;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface BoardDAO {
 
-	int totalCount();
+	int totalCount_1();
 
-	ArrayList<BoardDTO> mainList(int offset);
+	ArrayList<BoardDTO> boardList_1(int offset);
 
 	ArrayList<BoardDTO> boardList();
+
+	BoardDTO boardDetail(int id);
+
+	int write(HashMap<String, Object> params);
 
 
 

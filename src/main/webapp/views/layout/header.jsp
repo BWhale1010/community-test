@@ -33,7 +33,7 @@
 
 		<div class="collapse navbar-collapse ml-5" id="collapsibleNavbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link text-dark" href="/board1Form">자유게시판</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="/bdListForm_1">자유게시판</a></li>
 					<li class="nav-item"><a class="nav-link text-dark" href="/">게시판</a></li>
 				</ul>
 		</div>
@@ -42,13 +42,12 @@
 				id="collapsibleNavbar">
 				<ul class="navbar-nav">
 					<c:choose>
-						<c:when test="${empty sessionScope.loginId }">
+						<c:when test="${empty sessionScope.userName }">
 							<li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
 							<li class="nav-item"><a class="nav-link" href="/joinForm">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="nav-item float-left"><a class="nav-link"
-								href="/logout">로그아웃</a></li>
+							<li class="nav-item float-left"><a class="nav-link"  href="/login/logout">로그아웃</a></li>
 							<li class="nav-item float-left"><a class="nav-link" href="/">회원정보</a></li>
 						</c:otherwise>
 					</c:choose>
@@ -59,3 +58,5 @@
 	</nav>
 
 	<br>
+	<c:set var="userName" value="<%=(String)session.getAttribute(\"userName\")%>"></c:set>
+		

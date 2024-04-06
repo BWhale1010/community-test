@@ -8,13 +8,17 @@
 		select * from user order by id desc
 	</select>
 	
-	<insert id="join" >
+	<insert id="join"  parameterType="hashmap">
 		insert into user(username, email, password)
-		values(#{param1}, #{param2}, #{param3})
+		values(#{username},#{email},#{password})
 	</insert>
 	
-	<select id="login" resultType="String">
-		Select * from user where username =  #{param1} and password = #{param2}
+	<select id="login" resultType="User">
+		Select * from user where username =  #{param1}
+	</select>
+	
+	<select id="enc_pw" resultType="String" parameterType="String">
+		select password from user where username = #{username}
 	</select>
 
 

@@ -1,14 +1,17 @@
 package com.bw.community.user;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface UserDAO {
 
 	ArrayList<UserDTO> userList();
 
-	int join(String username, String email, String password);
+	UserDTO login(String username);
 
-	String login(String username, String password);
+	int join(HashMap<String, String> params);
+
+	String enc_pw(String username);
 
 
 

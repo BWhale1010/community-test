@@ -19,11 +19,7 @@ public class UserApiController {
 	public HashMap<String, Object> join(@RequestParam HashMap<String, String> params){
 		logger.info("params : {}", params);
 		
-		String username = params.get("username");
-		String email = params.get("email");
-		String password = params.get("password");
-		
-		int row = userService.join(username, email, password);
+		int row = userService.join(params);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("success", row);

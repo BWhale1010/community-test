@@ -22,19 +22,31 @@ public class BoardService {
 		return boardDAO.boardList();
 	}
 
-	public HashMap<String, Object> mainList(int page) {
+	public HashMap<String, Object> boardList_1(int page) {
 		int offset = (page-1)*10;
-		int totalCount = boardDAO.totalCount();
+		int totalCount = boardDAO.totalCount_1();
 		int totalPages = totalCount%10>0?(totalCount/10)+1:(totalCount/10);
 		
 		logger.info("총 페이지 수 : {}",totalPages);
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		ArrayList<BoardDTO> list = boardDAO.mainList(offset);
+		ArrayList<BoardDTO> list = boardDAO.boardList_1(offset);
 		
 		result.put("total", totalPages);
 		result.put("list", list);
 		
 		return result;
+	}
+
+	public BoardDTO boardDetail(int id) {
+		logger.info("board 상세보기 Service");
+		return boardDAO.boardDetail(id);
+	}
+
+	public int write(HashMap<String, Object> params) {
+		logger.info("board 쓰기 Service");
+		
+		int row = boardDAO.write(params);
+		return row;
 	}
 
 	

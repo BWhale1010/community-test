@@ -10,14 +10,16 @@
 
 
 	<div class="card">
-		<div class="card-header">
-			<h5>조회 순</h5>
+	
+		<div class="card-header d-flex justify-content-between">
+			<div><h5>최신글</h5></div>
+			<c:if test="${!empty sessionScope.userName }">
+			<div><a href="/board/writeForm"  type="button" class="btn btn-primary">글쓰기</a></div>
+			</c:if>
 		</div>
-
+		
 		<div>
 			<ul class="list-group list-group-flush" id="boardList">
-
-			
 			</ul>
 		</div>
 
@@ -41,5 +43,5 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-<script src="/js/board.js"></script>
+<script src="/js/board.js?ver=123"></script>
 <%@include file="../layout/footer.jsp"%>

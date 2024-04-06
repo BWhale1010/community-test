@@ -8,13 +8,20 @@
 		select title, u.username, count, c.categoryname from board b, user u, category c where b.userId  = u.id and b.categoryId = c.categoryId order by b.createDate desc limit 0,5
 	</select>
 
-<select id="mainList" resultType="board">
+<select id="boardList_1" resultType="board">
 	select b.id, b.content, b.count, b.title, u.username from board b, user u where b.userId = u.id order by id limit 10 offset #{param1}
 </select>
 
-<select id="totalCount" resultType="int">
-	select count(*) from board
+<select id="totalCount_1" resultType="int">
+	select count(*) from board where categoryId = 1
 </select>
 
+<select id="boardDetail" resultType="board"  parameterType="int">
+	select b.id, b.content, b.count, b.title, b.createDate, b.userId, b.categoryId, u.username from board b, user u where b.userId = u.id and b.id = #{param1}
+</select>
+
+<insert id="write" parameterType="hashmap">
+	insert into board(content, title, userId, categoryId) values(#{content}, #{title}, #{userId}, #{categoryId})
+</insert>
 
 </mapper>

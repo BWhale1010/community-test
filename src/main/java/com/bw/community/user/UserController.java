@@ -33,16 +33,19 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String login(String username, String password, HttpSession session, HttpServletRequest req, Model model) {
+	public String login(String username, String password, HttpSession session, 
+		HttpServletRequest req, Model model) {
 		logger.info("로그인 id : "+username+"password : "+password);
-		String loginId = UserService.login(username, password);
+		UserDTO loginId = UserService.login(username, password);
 		String page = "redirect:/";
 		String msg = "로그인 완료";
 		
 		
 		if(loginId != null) {
 			session = req.getSession();
-			session.setAttribute("loginId", loginId);
+			session.setAttribute("userName", loginId.getUsername());
+			session.setAttribute("email", loginId.getEmail());
+			session.setAttribute("userId", loginId.getId());
 		}else {
 			page = "user/loginForm";
 			msg = "로그인 실패";
@@ -53,11 +56,15 @@ public class UserController {
 		return page;
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/login/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("loginId");
+		session.removeAttribute("userName");
+		session.removeAttribute("email");
 		return "redirect:/";
 	}
+	
+	
+
 	
 	
 	
