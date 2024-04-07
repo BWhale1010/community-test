@@ -43,8 +43,12 @@ public class BoardController {
 	public String detail(@PathVariable("id") int id, Model model, HttpSession session) {
 		logger.info("게시판 id : "+id);
 		
+		ArrayList<ReplyDTO> reply = boardService.reply(id);
+		String userName_session = (String) session.getAttribute("userName");
+		model.addAttribute("userName_session", userName_session);
+		model.addAttribute("reply", reply);
 		model.addAttribute("boardDetail", boardService.boardDetail(id));
-		 
+
 		return "board/detail";
 	}
 	

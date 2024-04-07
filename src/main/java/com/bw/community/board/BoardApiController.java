@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,10 +61,38 @@ public class BoardApiController {
 		return map;
 	}
 	
-	@DeleteMapping("/board/delete/{id}")
+	@DeleteMapping("board/delete/{id}")
 	public HashMap<String, Object> boardDelete(@PathVariable("id") int id) {
 		logger.info("글 삭제 : "+id);
 		int row = boardService.delete(id);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("success", row);
+		
+		return map;
+	}
+	
+	@PostMapping("board/replyWrite")
+	public HashMap<String, Object> replyWrite(@RequestParam HashMap<String, Object> params, 
+			HttpSession session, HttpServletRequest req, Model model){
+		
+			int userId = (int) session.getAttribute("userId");
+			params.put("userId", userId);
+			params.put("categoryId", 1);
+			logger.info("params : {}",params);
+			int row = boardService.replyWrite(params);
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("success", row);
+			
+		return map;
+		
+	}
+	
+	@DeleteMapping("reply/delete/{id}")
+	public HashMap<String, Object> replyDelete(@PathVariable("id") int id) {
+		logger.info("댓글 삭제 : "+id);
+		int row = boardService.replyDelete(id);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("success", row);

@@ -62,6 +62,25 @@ public class BoardService {
 		return row;
 	}
 
+	public int replyWrite(HashMap<String, Object> params) {
+		logger.info("reply 쓰기 Service");
+		int row = boardDAO.replyWrite(params);
+		return row;
+	}
+
+	public ArrayList<ReplyDTO> reply(int id) {
+		logger.info("reply 보기 Service");
+		return boardDAO.reply(id);
+	}
+
+	public int replyDelete(int id) {
+		logger.info("reply 삭제 Service");
+		
+		int row = boardDAO.replyDelete(id);
+		
+		return row;
+	}
+
 
 	
 

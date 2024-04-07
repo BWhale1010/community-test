@@ -29,7 +29,19 @@
 </update>
 
 <delete id="delete">
- delete from board where id = #{id}
+ 	delete from board where id = #{id}
+</delete>
+
+<insert id="replyWrite" parameterType="hashmap">
+	insert into reply(content, boardId ,userId) values(#{content}, #{id}, #{userId})
+</insert>
+
+<select id="reply" resultType="reply"  parameterType="int">
+	select r.id, r.content, r.createDate, r.boardId, r.userId, u.username, u.id from reply r, user u where boardId = #{id} and r.userId = u.id
+</select>
+
+<delete id="replyDelete">
+	 delete from reply where id = #{id}
 </delete>
 
 

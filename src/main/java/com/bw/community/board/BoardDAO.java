@@ -19,6 +19,12 @@ public interface BoardDAO {
 
 	int delete(int id);
 
+	int replyWrite(HashMap<String, Object> params);
+
+	ArrayList<ReplyDTO> reply(int id);
+
+	int replyDelete(int id);
+
 
 
 
