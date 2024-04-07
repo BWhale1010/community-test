@@ -15,6 +15,12 @@ public interface BoardDAO {
 
 	int write(HashMap<String, Object> params);
 
+	int update(HashMap<String, Object> params);
+
+	int delete(int id);
+
+
+
 
 
 }

@@ -49,6 +49,20 @@ public class BoardService {
 		return row;
 	}
 
+	public int update(HashMap<String, Object> params) {
+		int row = boardDAO.update(params);
+		return row;
+	}
+
+	public int delete(int id) {
+		logger.info("board 삭제 Service");
+		
+		int row =  boardDAO.delete(id);
+		
+		return row;
+	}
+
+
 	
 
 

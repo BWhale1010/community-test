@@ -49,9 +49,24 @@ public class BoardController {
 	}
 	
 	@GetMapping("board/writeForm")
-	public String writeForm() {
+	public String writeForm(HttpSession session, Model model) {
+		String page = "board/writeForm";
+		String msg = "";
+		if(session.getAttribute("userId") == null) {
+			page = "/user/loginForm";
+			msg = "로그인이 필요합니다.";
+		}
 		
-		return "board/writeForm";
+		model.addAttribute("msg", msg);
+		
+		return page;
+	}
+	
+	@GetMapping("/board/updateForm/{id}")
+	public String updateForm(@PathVariable("id") int id, Model model) {
+		logger.info("게시판  수정 : "+id);
+		model.addAttribute("boardDetail",  boardService.boardDetail(id));
+		return "board/update";
 	}
 		
 		

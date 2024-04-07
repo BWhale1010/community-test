@@ -6,26 +6,34 @@
 
 <div class="container">
 	<form>
-
-		<div class="form-group">
+			<input type="hidden" id="id" value="${boardDetail.id }">
+			<div class="form-group">
 			<label for="title">Title</label> <input type="text"
-				class="form-control" placeholder="Enter title" id="title">
+				class="form-control" placeholder="Enter title" id="title"  value="${boardDetail.title }">
 		</div>
-
-		<div class="form-group">
+		
+				<div class="form-group">
 			<label for="content">Content:</label>
 			<textarea class="form-control summernote" rows="5" id="content">
+			${boardDetail.content}
 			</textarea>
 		</div>
+</form>
 
-	</form>
 
-	<button id="btn-save" class="btn btn-primary">글쓰기 완료</button>
+	<button id="btn-update" class="btn btn-primary">수정하기</button>
+
+
 
 </div>
 
+
+
+
 <%@include file="../layout/footer.jsp"%>
 </body>
+
+
 <script src="/js/board.js"></script>
 <script>
 	$('.summernote').summernote({

@@ -8,8 +8,8 @@
 	<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
 
 	<c:if test="${boardDetail.username == userName}">
-		<a href="/board/${boardDetail.id }/updateForm" class="btn btn-warning">수정</a>
-		<button id="btn-delete" class="btn btn-danger">삭제</button>
+		<a href="/board/updateForm/${boardDetail.id }" class="btn btn-warning">수정</a>
+		<button id="btn-delete" class="btn btn-danger" >삭제</button>
 	</c:if>
 
 	<br> <br>
@@ -38,5 +38,5 @@
 
 
 </body>
-<!-- <script src="/js/board.js?ver=123"></script> -->
+<script src="/js/board.js"></script>
 <%@include file="../layout/footer.jsp"%>

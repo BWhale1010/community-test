@@ -13,9 +13,7 @@
 	
 		<div class="card-header d-flex justify-content-between">
 			<div><h5>최신글</h5></div>
-			<c:if test="${!empty sessionScope.userName }">
 			<div><a href="/board/writeForm"  type="button" class="btn btn-primary">글쓰기</a></div>
-			</c:if>
 		</div>
 		
 		<div>

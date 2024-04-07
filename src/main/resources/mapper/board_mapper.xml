@@ -9,7 +9,7 @@
 	</select>
 
 <select id="boardList_1" resultType="board">
-	select b.id, b.content, b.count, b.title, u.username from board b, user u where b.userId = u.id order by id limit 10 offset #{param1}
+	select b.id, b.content, b.count, b.title, u.username from board b, user u where b.userId = u.id order by b.createDate desc, id limit 10 offset #{param1}
 </select>
 
 <select id="totalCount_1" resultType="int">
@@ -23,5 +23,14 @@
 <insert id="write" parameterType="hashmap">
 	insert into board(content, title, userId, categoryId) values(#{content}, #{title}, #{userId}, #{categoryId})
 </insert>
+
+<update id="update"  parameterType="hashmap">
+	update board set title = #{title}, content = #{content} where id = #{id}
+</update>
+
+<delete id="delete">
+ delete from board where id = #{id}
+</delete>
+
 
 </mapper>

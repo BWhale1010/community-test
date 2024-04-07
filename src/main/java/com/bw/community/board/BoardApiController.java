@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +43,32 @@ public class BoardApiController {
 			
 		return map;
 		
+	}
+	
+	@PostMapping("board/update/{id}")
+	public HashMap<String, Object> boardUpdate(@RequestParam HashMap<String, Object> params,
+			@PathVariable("id") int id){
+	
+			params.put("id", id);
+			logger.info("params : {}",params);
+			
+			int row = boardService.update(params);
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("success", row);
+			
+		return map;
+	}
+	
+	@DeleteMapping("/board/delete/{id}")
+	public HashMap<String, Object> boardDelete(@PathVariable("id") int id) {
+		logger.info("글 삭제 : "+id);
+		int row = boardService.delete(id);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("success", row);
+		
+		return map;
 	}
 	
 

@@ -9,6 +9,12 @@ let index={
 		$("#btn-save").on("click", ()=>{
 			this.save();
 		});
+		$("#btn-update").on("click", ()=>{
+			this.update();
+		});
+		$("#btn-delete").on("click", ()=>{
+			this.delete();
+		});
 	}
 	
 	,save: function(){
@@ -17,7 +23,6 @@ let index={
 			content: $("#content").val()
 			
 		};
-		console.log(content);
 		$.ajax({
 			type:"POST",
 			url: "/board/write",
@@ -26,6 +31,45 @@ let index={
 			success:function(data){
 				console.log("글쓰기 완료");
 				 location.href = "/";
+			},
+			error: function(e){
+				console.log(e);
+			}
+			
+		})
+	}
+	,update: function(){
+		let id = $("#id").val()
+		let param = {
+			title: $("#title").val(),
+			content: $("#content").val()
+			
+		};
+		$.ajax({
+			type:"POST",
+			url: "/board/update/"+id,
+			data: param,
+			dataType:"json",
+			success:function(data){
+				console.log("수정 완료");
+				 location.href = "/board/detail/"+id;
+			},
+			error: function(e){
+				console.log(e);
+			}
+			
+		})
+	}
+	,delete: function(){
+		let id = $("#id").text()
+		console.log("id : "+id);
+		$.ajax({
+			type:"delete",
+			url: "/board/delete/"+id,
+			dataType:"json",
+			success:function(data){
+				console.log("삭제 완료");
+				 location.href = "/bdListForm_1";
 			},
 			error: function(e){
 				console.log(e);
