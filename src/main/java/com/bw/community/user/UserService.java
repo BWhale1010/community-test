@@ -54,6 +54,20 @@ public class UserService {
 		
 		return loginId;
 	}
+
+	public UserDTO user(String id) {
+		logger.info("회원정보 서비스");
+		return UserDao.user(id);
+	}
+
+	public int userUpdate(HashMap<String, Object> params) {
+		logger.info("회원정보 업데이트 service");
+		String password = (String) params.get("password");
+		String enc_pw = encoder.encode(password);
+		params.put("password", enc_pw);
+		int row = UserDao.userUpdate(params);
+		return row;
+	}
 	
 
 }

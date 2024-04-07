@@ -48,7 +48,7 @@
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item float-left"><a class="nav-link"  href="/login/logout">로그아웃</a></li>
-							<li class="nav-item float-left"><a class="nav-link" href="/">회원정보</a></li>
+							<li class="nav-item float-left"><a class="nav-link" href="/user">회원정보</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

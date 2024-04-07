@@ -13,6 +13,10 @@ public interface UserDAO {
 
 	String enc_pw(String username);
 
+	UserDTO user(String id);
+
+	int userUpdate(HashMap<String, Object> params);
+
 
 
 

@@ -63,6 +63,18 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/user")
+	public String user(HttpSession session, Model model) {
+		String id = String.valueOf(session.getAttribute("userId"));
+		logger.info("회원정보 보기 : "+id);
+		
+		UserDTO user = UserService.user(id);
+		
+		model.addAttribute("user", user);
+		
+		return "user/user";
+	}
+	
 	
 
 	
