@@ -19,7 +19,7 @@
 				<c:forEach var="boardList" items="${boardList }">
 					<li class="list-group-item d-flex justify-content-between">
 						<div>
-							<a href="#">${boardList.title }</a>
+							<a href="/board/detail/${boardList.id }">${boardList.title }</a>
 						</div>
 						<div class="d-flex font-italic">
 							<div>작성자 : ${boardList.username} &nbsp;</div>

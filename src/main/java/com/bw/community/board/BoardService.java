@@ -39,6 +39,7 @@ public class BoardService {
 
 	public BoardDTO boardDetail(int id) {
 		logger.info("board 상세보기 Service");
+		boardDAO.boardCount(id);
 		return boardDAO.boardDetail(id);
 	}
 

@@ -35,7 +35,16 @@
 				<textarea id="reply-content" class="form-control" rows="1"></textarea>
 			</div>
 			<div class="card-footer">
-				<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+
+
+				<c:choose>
+					<c:when test="${empty userName }">
+						<button type="button" id="btn-reply-save-notLogin" class="btn btn-primary" onclick='alert("로그인이 필요합니다.");'>등록</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</form>
 	</div>
@@ -45,7 +54,7 @@
 	<div class="card">
 		<div class="card-header">댓글 리스트</div>
 		<ul id="Reply-box" class="list-group">
-			<c:forEach var="reply" items="${reply }" >
+			<c:forEach var="reply" items="${reply }">
 
 				<li id="Reply-${reply.id }"
 					class="list-group-item d-flex justify-content-between">

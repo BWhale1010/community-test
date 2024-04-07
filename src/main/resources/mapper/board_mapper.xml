@@ -5,7 +5,7 @@
 <mapper namespace="com.bw.community.board.BoardDAO">
 
 	<select id="boardList" resultType="board">
-		select title, u.username, count, c.categoryname from board b, user u, category c where b.userId  = u.id and b.categoryId = c.categoryId order by b.createDate desc limit 0,5
+		select title, u.username, count, c.categoryname, b.id from board b, user u, category c where b.userId  = u.id and b.categoryId = c.categoryId order by b.count desc limit 0,5
 	</select>
 
 <select id="boardList_1" resultType="board">
@@ -43,6 +43,10 @@
 <delete id="replyDelete">
 	 delete from reply where id = #{id}
 </delete>
+
+<update id="boardCount" parameterType="int">
+	update board set count = count+1 where id = #{id}
+</update>
 
 
 </mapper>

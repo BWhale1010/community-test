@@ -80,13 +80,13 @@ let index={
 			
 		})
 	}
-	,reply: function(){
+	,reply: function(){		
 		let id = $("#id").text();
 		let param = {
 			id: $("#id").text(),
 			content: $("#reply-content").val()
-			
 		};
+		console.log(param.content);
 		$.ajax({
 			type:"POST",
 			url: "/board/replyWrite",

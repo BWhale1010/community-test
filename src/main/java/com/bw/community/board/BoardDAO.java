@@ -25,6 +25,8 @@ public interface BoardDAO {
 
 	int replyDelete(int id);
 
+	void boardCount(int id);
+
 
 
 
