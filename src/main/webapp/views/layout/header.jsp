@@ -33,8 +33,7 @@
 
 		<div class="collapse navbar-collapse ml-5" id="collapsibleNavbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link text-dark" href="/bdListForm_1">자유게시판</a></li>
-					<li class="nav-item"><a class="nav-link text-dark" href="/">게시판</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="/bdListForm_1">게시판</a></li>
 				</ul>
 		</div>
 		

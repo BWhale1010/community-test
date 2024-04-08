@@ -10,7 +10,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<h5>자유게시판 인기글</h5>
+			<h5>인기글</h5>
 		</div>
 
 		<div>
@@ -38,29 +38,8 @@
 	<hr>
 	<br>
 
-	<div class="card">
-		<div class="card-header">
-			<h5>인기글</h5>
-		</div>
 
-		<div>
-			<ul class="list-group list-group-flush">
-				<c:forEach var="boardList" items="${boardList }">
-					<li class="list-group-item d-flex justify-content-between">
-						<div>
-							<a href="#">${boardList.title }</a>
-						</div>
-						<div class="d-flex font-italic">
-							<div>작성자 : ${boardList.username} &nbsp;</div>
-							<div>조회수 : ${boardList.count }</div>
-						</div>
-					</li>
 
-				</c:forEach>
-			</ul>
-		</div>
-
-	</div>
 
 
 

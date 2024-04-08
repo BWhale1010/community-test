@@ -17,6 +17,14 @@ public interface UserDAO {
 
 	int userUpdate(HashMap<String, Object> params);
 
+	UserDTO findkakao(HashMap<String, Object> userInfo);
+
+	void kakaoinsert(HashMap<String, Object> userInfo);
+
+	UserDTO userFind(String id);
+
+	void joinKakao(HashMap<String, Object> userInfo);
+
 
 
 
